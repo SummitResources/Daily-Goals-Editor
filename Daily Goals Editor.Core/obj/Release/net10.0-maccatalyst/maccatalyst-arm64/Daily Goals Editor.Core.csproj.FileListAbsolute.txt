@@ -1,0 +1,2 @@
+/Users/samjones/RiderProjects/Developer-Tools/Daily Goals Editor/Daily Goals Editor.Core/obj/Release/net10.0-maccatalyst/maccatalyst-arm64/_ProcessedBundleResourcesPath.items
+/Users/samjones/RiderProjects/Developer-Tools/Daily Goals Editor/Daily Goals Editor.Core/obj/Release/net10.0-maccatalyst/maccatalyst-arm64/_ProcessedContentPath.items

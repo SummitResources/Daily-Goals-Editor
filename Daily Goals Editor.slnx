@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Daily Goals Editor/Daily Goals Editor.csproj" />
+  <Project Path="Daily Goals Editor.Core/Daily Goals Editor.Core.csproj" />
+  <Project Path="Daily Goals Editor.Tests/Daily Goals Editor.Tests.csproj" />
+</Solution>

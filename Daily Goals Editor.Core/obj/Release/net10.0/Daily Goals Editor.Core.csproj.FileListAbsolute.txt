@@ -1,0 +1,11 @@
+/Users/samjones/RiderProjects/Developer-Tools/Daily Goals Editor/Daily Goals Editor.Core/bin/Release/net10.0/Daily Goals Editor.Core.deps.json
+/Users/samjones/RiderProjects/Developer-Tools/Daily Goals Editor/Daily Goals Editor.Core/bin/Release/net10.0/Daily Goals Editor.Core.dll
+/Users/samjones/RiderProjects/Developer-Tools/Daily Goals Editor/Daily Goals Editor.Core/bin/Release/net10.0/Daily Goals Editor.Core.pdb
+/Users/samjones/RiderProjects/Developer-Tools/Daily Goals Editor/Daily Goals Editor.Core/obj/Release/net10.0/Daily Goals Editor.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/samjones/RiderProjects/Developer-Tools/Daily Goals Editor/Daily Goals Editor.Core/obj/Release/net10.0/Daily Goals Editor.Core.AssemblyInfoInputs.cache
+/Users/samjones/RiderProjects/Developer-Tools/Daily Goals Editor/Daily Goals Editor.Core/obj/Release/net10.0/Daily Goals Editor.Core.AssemblyInfo.cs
+/Users/samjones/RiderProjects/Developer-Tools/Daily Goals Editor/Daily Goals Editor.Core/obj/Release/net10.0/Daily Goals Editor.Core.csproj.CoreCompileInputs.cache
+/Users/samjones/RiderProjects/Developer-Tools/Daily Goals Editor/Daily Goals Editor.Core/obj/Release/net10.0/Daily Goals Editor.Core.dll
+/Users/samjones/RiderProjects/Developer-Tools/Daily Goals Editor/Daily Goals Editor.Core/obj/Release/net10.0/refint/Daily Goals Editor.Core.dll
+/Users/samjones/RiderProjects/Developer-Tools/Daily Goals Editor/Daily Goals Editor.Core/obj/Release/net10.0/Daily Goals Editor.Core.pdb
+/Users/samjones/RiderProjects/Developer-Tools/Daily Goals Editor/Daily Goals Editor.Core/obj/Release/net10.0/ref/Daily Goals Editor.Core.dll

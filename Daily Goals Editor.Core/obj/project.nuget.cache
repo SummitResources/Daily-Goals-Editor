@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "yA+JsQBLUlo=",
+  "success": true,
+  "projectFilePath": "/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Core/Daily Goals Editor.Core.csproj",
+  "expectedPackageFiles": [
+    "/Users/samjones/.nuget/packages/microsoft.netcore.app.ref/10.0.14/microsoft.netcore.app.ref.10.0.14.nupkg.sha512",
+    "/Users/samjones/.nuget/packages/microsoft.aspnetcore.app.ref/10.0.14/microsoft.aspnetcore.app.ref.10.0.14.nupkg.sha512"
+  ],
+  "logs": []
+}
