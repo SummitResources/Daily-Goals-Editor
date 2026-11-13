@@ -1,0 +1,561 @@
+@page "/"
+@inject BrowserDayPlanStore Store
+@inject TextScale TextScale
+@inject IJSRuntime JS
+@inject ILogger<Home> Logger
+@implements IDisposable
+
+<PageTitle>Daily Goals Editor</PageTitle>
+
+@if (_loadError is not null)
+{
+    <main class="load-error">
+        <h1>Today's list couldn't be read</h1>
+        <p>The saved plan for today is damaged, so it hasn't been replaced with an empty one.</p>
+        <pre>@_loadError</pre>
+    </main>
+}
+else if (_plan is not null)
+{
+    <div class="app">
+        <header class="titlebar">
+            <div class="brand">
+                <span class="brand-mark"><Icon Kind="IconKind.List" Size="16" /></span>
+                <span class="brand-name">Daily Goals Editor</span>
+            </div>
+            <div class="titlebar-actions">
+                <span class="save-dot @(_saveFailed ? "failed" : "")"></span>
+                <span class="small">@(_saveFailed ? "Not saved" : "Saved locally")</span>
+                <span class="vrule"></span>
+                <div class="text-scale">
+                    <UiButton Text="A−" Variant="ButtonVariant.Ghost" Compact Title="Smaller text"
+                              Enabled="@(TextScale.Current > TextScale.MINIMUM)"
+                              OnClick="() => TextScale.SetAsync(TextScale.Current - TextScale.STEP)" />
+                    <UiButton Text="@TextScale.Current.ToString("P0", CultureInfo.CurrentCulture)" Variant="ButtonVariant.Ghost"
+                              Compact Title="Reset text size" OnClick="() => TextScale.SetAsync(1)" />
+                    <UiButton Text="A+" Variant="ButtonVariant.Ghost" Compact Title="Larger text"
+                              Enabled="@(TextScale.Current < TextScale.MAXIMUM)"
+                              OnClick="() => TextScale.SetAsync(TextScale.Current + TextScale.STEP)" />
+                </div>
+            </div>
+        </header>
+
+        <div class="columns">
+            <aside class="sidebar">
+                <div class="sidebar-date">
+                    <div class="eyebrow">Today</div>
+                    <h1 class="h1">@DateTime.Today.ToString("dddd, MMMM d", CultureInfo.CurrentCulture)</h1>
+                </div>
+
+                <nav class="category-nav" aria-label="Categories">
+                    @NavRow(null, "All tasks", _plan.Tasks.Count)
+                    @foreach (var category in Enum.GetValues<Category>())
+                    {
+                        @NavRow(category, category.ToString(), _plan.Tasks.Count(task => task.Category == category))
+                    }
+                </nav>
+
+                <div class="sidebar-footer">
+                    @{
+                        var completeCount = _plan.Tasks.Count(task => task.Complete);
+                        var progress = _plan.Tasks.Count == 0 ? 0 : 100.0 * completeCount / _plan.Tasks.Count;
+                    }
+                    <div class="card progress-card">
+                        <div class="row-between">
+                            <span class="small">Daily progress</span>
+                            <strong class="text-small">@completeCount/@_plan.Tasks.Count</strong>
+                        </div>
+                        <div class="progress-track" role="progressbar" aria-label="Daily progress"
+                             aria-valuemin="0" aria-valuemax="@_plan.Tasks.Count" aria-valuenow="@completeCount">
+                            <div class="progress-fill" style="width:@progress.ToString("0.##", CultureInfo.InvariantCulture)%"></div>
+                        </div>
+                    </div>
+                    <UiButton Text="Start A New Day" Variant="ButtonVariant.Ghost" Compact OnClick="RequestNewDay" />
+                </div>
+            </aside>
+
+            <main class="main">
+                <div class="main-heading">
+                    <div>
+                        <div class="eyebrow">Plan your day</div>
+                        <h2 class="h2">@(_categoryFilter?.ToString() ?? "Today’s tasks")</h2>
+                    </div>
+                    <UiButton Text="Add task" Icon="IconKind.Plus" Variant="ButtonVariant.Primary" OnClick="AddTask" />
+                </div>
+
+                <section class="card prompt-card">
+                    <div class="prompt-text">
+                        <label for="prompt" class="prompt-question">@_plan.PromptQuestion</label>
+                        <div class="small">@_plan.PromptHint</div>
+                    </div>
+                    <form class="prompt-row" @onsubmit="SubmitPrompt">
+                        <input id="prompt" class="input" autocomplete="off" placeholder="Type here and press Enter"
+                               @bind="_promptText" @bind:event="oninput" />
+                        <UiButton Text="Add" Variant="ButtonVariant.Primary" Type="submit" />
+                        @if (_plan.PromptTask is not null)
+                        {
+                            <UiButton Text="@(_plan.AwaitingTitle ? "Skip" : "Done")" Icon="IconKind.Check" OnClick="Done" />
+                        }
+                    </form>
+                    @if (_status is not null)
+                    {
+                        <div class="status" role="status">@_status</div>
+                    }
+                </section>
+
+                <div class="task-list">
+                    @{
+                        var visibleTasks = _categoryFilter is null
+                            ? _plan.Tasks
+                            : _plan.Tasks.Where(task => task.Category == _categoryFilter).ToList();
+                    }
+                    @if (visibleTasks.Count == 0)
+                    {
+                        <div class="card empty-list">
+                            <span class="icon-badge"><Icon Kind="IconKind.List" Size="21" /></span>
+                            <p class="small">
+                                @(_categoryFilter is null
+                                    ? "No tasks yet. Answer the prompt above to get started."
+                                    : $"No tasks in {_categoryFilter} yet.")
+                            </p>
+                            <UiButton Text="Add the first one" Variant="ButtonVariant.Ghost" Compact OnClick="AddTask" />
+                        </div>
+                    }
+                    else
+                    {
+                        @foreach (var task in visibleTasks)
+                        {
+                            @TaskCard(task)
+                        }
+                    }
+                </div>
+            </main>
+
+            <aside class="editor-panel">
+                <div class="editor">
+                    @if (SelectedTask is { } selected)
+                    {
+                        @Editor(selected)
+                    }
+                    else
+                    {
+                        <div class="editor-empty">
+                            <span class="icon-badge large"><Icon Kind="IconKind.List" Size="24" /></span>
+                            <div class="editor-empty-title">Select a task to edit</div>
+                            <div class="small">Choose a task from the list or create a new one.</div>
+                            <UiButton Text="Add task" Icon="IconKind.Plus" Variant="ButtonVariant.Primary" OnClick="AddTask" />
+                        </div>
+                    }
+                </div>
+
+                <section class="card output-card">
+                    <div class="row-between">
+                        <div>
+                            <div class="section-title">Excel-ready list</div>
+                            <div class="small">Formatted for a single cell</div>
+                        </div>
+                        <UiButton Text="@(_copied ? "Copied" : "Copy")" Icon="@(_copied ? IconKind.Check : IconKind.Copy)"
+                                  Variant="@(_copied ? ButtonVariant.Success : ButtonVariant.Secondary)" Compact OnClick="Copy" />
+                    </div>
+                    @{ var output = _plan.Format(); }
+                    <pre class="output @(output.Length == 0 ? "empty" : "")">@(output.Length == 0 ? "Add a task to generate your list." : output)</pre>
+                    <div class="small">Paste directly into Excel. Line breaks and indentation are preserved.</div>
+                </section>
+            </aside>
+        </div>
+    </div>
+
+    @if (_confirmingNewDay)
+    {
+        <div class="modal-backdrop" @onclick="() => _confirmingNewDay = false">
+            <div class="modal card" role="alertdialog" aria-modal="true" aria-labelledby="new-day-title"
+                 @onclick:stopPropagation @onkeydown="OnModalKeyDown">
+                <h3 id="new-day-title" class="modal-title">Start a new day?</h3>
+                <p class="small">This clears the current list.</p>
+                <div class="modal-actions">
+                    <UiButton Text="Cancel" OnClick="() => _confirmingNewDay = false" />
+                    <UiButton Text="Clear" Variant="ButtonVariant.Primary" Class="confirm-new-day" OnClick="StartNewDay" />
+                </div>
+            </div>
+        </div>
+    }
+}
+
+@code {
+    private const int COPIED_CONFIRMATION_MILLISECONDS = 1800; // how long the design shows the "Copied" state
+
+    private DayPlan? _plan;
+    private string? _loadError;
+    private Guid? _selectedTaskId;
+    private Category? _categoryFilter;
+    private string? _promptText;
+    private string? _status;
+    private bool _saveFailed;
+    private bool _copied;
+    private bool _confirmingNewDay;
+    private CancellationTokenSource? _copiedResetCancellation;
+
+    /// <summary>An element to focus once the next render has put it on the page.</summary>
+    private (string Selector, bool SelectAll)? _pendingFocus;
+
+    private DayTask? SelectedTask => _plan?.Tasks.FirstOrDefault(task => task.Id == _selectedTaskId);
+
+    private Category NewTaskCategory => _categoryFilter ?? Category.Product;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await TextScale.LoadAsync();
+        try
+        {
+            _plan = await Store.LoadAsync();
+        }
+        catch (Exception ex) when (ex is System.Text.Json.JsonException or InvalidDataException)
+        {
+            Logger.LogError(ex, "Failed to load the day plan");
+            _loadError = ex.Message;
+            return;
+        }
+
+        _selectedTaskId = _plan.Tasks.FirstOrDefault()?.Id;
+        if (_plan.Tasks.Count > 0 && _plan.Date < DateOnly.FromDateTime(DateTime.Today))
+        {
+            _status = $"Picked up your list from {_plan.Date:dddd, MMM d}. Use \"Start a new day\" to clear it.";
+        }
+        _pendingFocus = ("#prompt", false);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (_pendingFocus is { } focus)
+        {
+            _pendingFocus = null;
+            await JS.InvokeVoidAsync("dailyGoals.focus", focus.Selector, focus.SelectAll);
+        }
+    }
+
+    private async Task SubmitPrompt()
+    {
+        var result = _plan!.Submit(_promptText, NewTaskCategory);
+        _promptText = null;
+        _status = result.Message;
+
+        if (result.Task is not null)
+        {
+            _selectedTaskId = result.Task.Id;
+            if (_categoryFilter is not null && result.Task.Category != _categoryFilter)
+            {
+                _categoryFilter = null;
+            }
+        }
+
+        await SaveAsync();
+        _pendingFocus = ("#prompt", false);
+    }
+
+    private async Task Done()
+    {
+        if (!string.IsNullOrWhiteSpace(_promptText))
+        {
+            _plan!.Submit(_promptText, NewTaskCategory);
+        }
+        _promptText = null;
+        _plan!.ReturnToMainPrompt();
+        _status = null;
+        await SaveAsync();
+        _pendingFocus = ("#prompt", false);
+    }
+
+    private async Task AddTask()
+    {
+        var task = _plan!.AddUntitledTask(NewTaskCategory);
+        _selectedTaskId = task.Id;
+        await SaveAsync();
+        _pendingFocus = ("#task-title", true);
+    }
+
+    private async Task Copy()
+    {
+        if (_plan!.Tasks.Count == 0)
+        {
+            return;
+        }
+
+        try
+        {
+            await JS.InvokeVoidAsync("dailyGoals.copyText", DayPlan.ToExcelCell(_plan.Format()));
+        }
+        catch (JSException ex)
+        {
+            Logger.LogError(ex, "Failed to copy the list");
+            _status = "Couldn't reach the clipboard. Select the list and copy it instead.";
+            return;
+        }
+
+        _copied = true;
+        _copiedResetCancellation?.Cancel();
+        _copiedResetCancellation = new CancellationTokenSource();
+        try
+        {
+            await Task.Delay(COPIED_CONFIRMATION_MILLISECONDS, _copiedResetCancellation.Token);
+            _copied = false;
+        }
+        catch (TaskCanceledException)
+        {
+            // A newer copy restarted the confirmation; that one will reset the button.
+        }
+    }
+
+    private async Task RequestNewDay()
+    {
+        if (_plan!.Tasks.Count > 0)
+        {
+            _confirmingNewDay = true;
+            _pendingFocus = (".confirm-new-day", false);
+            return;
+        }
+        await StartNewDay();
+    }
+
+    private async Task StartNewDay()
+    {
+        _confirmingNewDay = false;
+        _plan!.StartNewDay();
+        _selectedTaskId = null;
+        _categoryFilter = null;
+        _status = null;
+        await SaveAsync();
+        _pendingFocus = ("#prompt", false);
+    }
+
+    private void OnModalKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Escape")
+        {
+            _confirmingNewDay = false;
+        }
+    }
+
+    private async Task SaveAsync()
+    {
+        try
+        {
+            await Store.SaveAsync(_plan!);
+            _saveFailed = false;
+        }
+        catch (JSException ex)
+        {
+            // e.g. the browser's storage quota is full or storage is blocked for this site.
+            Logger.LogError(ex, "Failed to save the day plan");
+            _saveFailed = true;
+        }
+    }
+
+    private async Task ToggleComplete(DayTask task)
+    {
+        task.Complete = !task.Complete;
+        await SaveAsync();
+    }
+
+    private async Task Move(DayTask task, int offset)
+    {
+        _plan!.Move(task, offset);
+        await SaveAsync();
+    }
+
+    private async Task Remove(DayTask task)
+    {
+        var index = _plan!.Tasks.IndexOf(task);
+        _plan.Remove(task);
+        _selectedTaskId = _plan.Tasks.Count == 0 ? null : _plan.Tasks[Math.Min(index, _plan.Tasks.Count - 1)].Id;
+        await SaveAsync();
+    }
+
+    private async Task SetTitle(DayTask task, string? value)
+    {
+        task.Title = string.IsNullOrWhiteSpace(value) ? null : value;
+        await SaveAsync();
+    }
+
+    private async Task SetTicket(DayTask task, string? value)
+    {
+        _plan!.SetTicket(task, value?.ToUpperInvariant());
+        await SaveAsync();
+    }
+
+    private async Task SetCategory(DayTask task, string? value)
+    {
+        if (Enum.TryParse<Category>(value, out var category))
+        {
+            _plan!.SetCategory(task, category);
+            await SaveAsync();
+        }
+    }
+
+    private async Task SetSubItem(DayTask task, int index, string? value)
+    {
+        task.SubItems[index] = value ?? "";
+        await SaveAsync();
+    }
+
+    private async Task RemoveSubItem(DayTask task, int index)
+    {
+        task.SubItems.RemoveAt(index);
+        await SaveAsync();
+    }
+
+    private async Task AddSubItem(DayTask task)
+    {
+        task.SubItems.Add("");
+        await SaveAsync();
+        _pendingFocus = ($"#subitem-{task.SubItems.Count - 1}", false);
+    }
+
+    /// <summary>Enter moves to the next step, adding one after the last, so a list can be typed without the mouse.</summary>
+    private async Task OnSubItemKeyDown(DayTask task, int index, KeyboardEventArgs e)
+    {
+        if (e.Key != "Enter")
+        {
+            return;
+        }
+
+        if (index == task.SubItems.Count - 1)
+        {
+            await AddSubItem(task);
+        }
+        else
+        {
+            _pendingFocus = ($"#subitem-{index + 1}", false);
+        }
+    }
+
+    private void OnTaskCardKeyDown(DayTask task, KeyboardEventArgs e)
+    {
+        if (e.Key is "Enter" or " ")
+        {
+            _selectedTaskId = task.Id;
+        }
+    }
+
+    public void Dispose() => _copiedResetCancellation?.Cancel();
+
+    /// <param name="category">The category to filter by, or null for "All tasks".</param>
+    private RenderFragment NavRow(Category? category, string name, int count) =>
+        @<button type="button" class="nav-row @(_categoryFilter == category ? "active" : "")"
+                 aria-current="@(_categoryFilter == category ? "true" : null)"
+                 @onclick="() => _categoryFilter = category">
+            @if (category is null)
+            {
+                <span class="nav-icon"><Icon Kind="IconKind.List" Size="15" /></span>
+            }
+            else
+            {
+                <span class="nav-dot"><CategoryDot Category="category.Value" Size="9" /></span>
+            }
+            <span class="nav-name">@name</span>
+            <span class="small">@count</span>
+        </button>;
+
+    private RenderFragment TaskCard(DayTask task) =>
+        @<div class="task-card card @(task.Id == _selectedTaskId ? "selected" : "")" tabindex="0" role="button"
+              aria-pressed="@(task.Id == _selectedTaskId ? "true" : "false")"
+              @onclick="() => _selectedTaskId = task.Id"
+              @onkeydown="e => OnTaskCardKeyDown(task, e)">
+            <button type="button" class="complete-check @(task.Complete ? "complete" : "")"
+                    aria-label="@(task.Complete ? "Mark incomplete" : "Mark complete")"
+                    @onclick="() => ToggleComplete(task)" @onclick:stopPropagation @onkeydown:stopPropagation>
+                @if (task.Complete)
+                {
+                    <Icon Kind="IconKind.Check" Size="13" />
+                }
+            </button>
+            <div class="task-body">
+                <div class="task-title @(task.Complete ? "complete" : "")">@task.DisplayTitle</div>
+                <div class="task-meta">
+                    @if (task.Ticket is not null)
+                    {
+                        <span class="chip mono">@task.Ticket</span>
+                        <span class="meta-sep">·</span>
+                    }
+                    <CategoryDot Category="task.Category" Size="7" />
+                    <span>@task.Category</span>
+                    <span class="meta-sep">·</span>
+                    <span>@(task.SubItemCount == 1 ? "1 sub-item" : $"{task.SubItemCount} sub-items")</span>
+                </div>
+            </div>
+            @if (_plan!.PromptTask == task)
+            {
+                <span class="prompt-badge">@(_plan.AwaitingTitle ? "Adding title" : "Adding steps")</span>
+            }
+        </div>;
+
+    private RenderFragment Editor(DayTask task)
+    {
+        var index = _plan!.Tasks.IndexOf(task);
+        return @<div class="editor-form">
+            <div class="row-between">
+                <div class="section-title">Edit task</div>
+                <div class="toolbar">
+                    <UiButton Icon="IconKind.ChevronUp" Variant="ButtonVariant.Ghost" Title="Move up"
+                              Enabled="@(index > 0)" OnClick="() => Move(task, -1)" />
+                    <UiButton Icon="IconKind.ChevronDown" Variant="ButtonVariant.Ghost" Title="Move down"
+                              Enabled="@(index < _plan.Tasks.Count - 1)" OnClick="() => Move(task, 1)" />
+                    <span class="vrule"></span>
+                    <UiButton Icon="IconKind.Trash" Variant="ButtonVariant.Danger" Title="Delete task" OnClick="() => Remove(task)" />
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="task-title" class="field-label">Task title</label>
+                <input id="task-title" class="input" autocomplete="off" value="@task.Title"
+                       placeholder="@(task.Ticket ?? "What needs doing?")"
+                       @oninput="e => SetTitle(task, e.Value as string)" />
+            </div>
+
+            <div class="field-pair">
+                <div class="field">
+                    <label for="task-ticket" class="field-label">Ticket ID</label>
+                    <input id="task-ticket" class="input ticket-input" autocomplete="off" spellcheck="false"
+                           value="@task.Ticket" placeholder="e.g. PROD-123"
+                           @oninput="e => SetTicket(task, e.Value as string)" />
+                </div>
+                <div class="field">
+                    <label for="task-category" class="field-label">Category</label>
+                    <div class="input select-wrap">
+                        <CategoryDot Category="task.Category" Size="8" />
+                        <select id="task-category" value="@task.Category.ToString()"
+                                @onchange="e => SetCategory(task, e.Value as string)">
+                            @foreach (var category in Enum.GetValues<Category>())
+                            {
+                                <option value="@category">@category</option>
+                            }
+                        </select>
+                        <span class="select-chevron"><Icon Kind="IconKind.ChevronDown" Size="15" /></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subitems">
+                <div class="row-between">
+                    <div>
+                        <div class="section-title">Sub-items</div>
+                        <div class="small">Add one detail per line</div>
+                    </div>
+                    <UiButton Text="Add item" Icon="IconKind.Plus" Compact OnClick="() => AddSubItem(task)" />
+                </div>
+                @for (var subItemIndex = 0; subItemIndex < task.SubItems.Count; subItemIndex++)
+                {
+                    var rowIndex = subItemIndex;
+                    <div class="subitem-row">
+                        <span class="grip" aria-hidden="true">⋮⋮</span>
+                        <input id="subitem-@rowIndex" class="input" autocomplete="off" value="@task.SubItems[rowIndex]"
+                               placeholder="Describe the next step" aria-label="Step @(rowIndex + 1)"
+                               @oninput="e => SetSubItem(task, rowIndex, e.Value as string)"
+                               @onkeydown="e => OnSubItemKeyDown(task, rowIndex, e)" />
+                        <UiButton Icon="IconKind.Trash" Variant="ButtonVariant.Danger" Title="Delete step"
+                                  OnClick="() => RemoveSubItem(task, rowIndex)" />
+                    </div>
+                }
+            </div>
+        </div>;
+    }
+}

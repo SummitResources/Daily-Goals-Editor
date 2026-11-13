@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Daily Goals Editor.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b41e6ad957a760b0d226decabe38f2f52bc26771")]
 [assembly: System.Reflection.AssemblyProductAttribute("Daily Goals Editor.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Daily Goals Editor.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

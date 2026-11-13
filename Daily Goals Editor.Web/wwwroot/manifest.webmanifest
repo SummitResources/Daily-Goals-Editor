@@ -1,0 +1,21 @@
+{
+  "name": "Daily Goals Editor",
+  "short_name": "Daily Goals",
+  "description": "Plan the day's goals and copy them into Excel as one formatted cell.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "orientation": "any",
+  "background_color": "#F3F4F6",
+  "theme_color": "#4F46E5",
+  "categories": ["productivity"],
+  "prefer_related_applications": false,
+  "icons": [
+    { "src": "icon.svg", "type": "image/svg+xml", "sizes": "any", "purpose": "any" },
+    { "src": "icon-512.png", "type": "image/png", "sizes": "512x512", "purpose": "any" },
+    { "src": "icon-192.png", "type": "image/png", "sizes": "192x192", "purpose": "any" },
+    { "src": "icon-maskable-512.png", "type": "image/png", "sizes": "512x512", "purpose": "maskable" }
+  ]
+}

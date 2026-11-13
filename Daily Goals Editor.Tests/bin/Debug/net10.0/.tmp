@@ -1,0 +1,15 @@
+{
+  "Date": "2026-11-13",
+  "Tasks": [
+    {
+      "Id": "e87d34fa-f475-451e-800a-eb1e728759c5",
+      "Category": "Design",
+      "Complete": false,
+      "SubItems": [],
+      "Title": "Reply to emails",
+      "Ticket": null
+    }
+  ],
+  "KnownPrefixes": [],
+  "PrefixCategories": {}
+}

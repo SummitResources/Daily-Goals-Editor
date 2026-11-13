@@ -1,0 +1,101 @@
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/.msCoverageSourceRootsMapping_Daily Goals Editor.Tests
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/CoverletSourceRootsMapping_Daily Goals Editor.Tests
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/xunit.abstractions.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/xunit.runner.visualstudio.testadapter.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/Daily Goals Editor.Tests.deps.json
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/Daily Goals Editor.Tests.runtimeconfig.json
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/Daily Goals Editor.Tests.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/Daily Goals Editor.Tests.pdb
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/Microsoft.VisualStudio.CodeCoverage.Shim.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/Microsoft.TestPlatform.CoreUtilities.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/Microsoft.TestPlatform.PlatformAbstractions.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/Microsoft.TestPlatform.CommunicationUtilities.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/Microsoft.TestPlatform.CrossPlatEngine.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/Microsoft.TestPlatform.Utilities.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/Microsoft.VisualStudio.TestPlatform.Common.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/testhost.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/Newtonsoft.Json.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/xunit.assert.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/xunit.core.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/xunit.execution.dotnet.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/cs/Microsoft.TestPlatform.CoreUtilities.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/cs/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/de/Microsoft.TestPlatform.CoreUtilities.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/de/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/es/Microsoft.TestPlatform.CoreUtilities.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/es/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/fr/Microsoft.TestPlatform.CoreUtilities.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/fr/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/it/Microsoft.TestPlatform.CoreUtilities.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/it/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/ja/Microsoft.TestPlatform.CoreUtilities.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/ja/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/ko/Microsoft.TestPlatform.CoreUtilities.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/ko/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/pl/Microsoft.TestPlatform.CoreUtilities.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/pl/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/pt-BR/Microsoft.TestPlatform.CoreUtilities.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/pt-BR/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/ru/Microsoft.TestPlatform.CoreUtilities.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/ru/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/tr/Microsoft.TestPlatform.CoreUtilities.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/tr/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/zh-Hans/Microsoft.TestPlatform.CoreUtilities.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/zh-Hans/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/zh-Hant/Microsoft.TestPlatform.CoreUtilities.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/zh-Hant/Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/cs/Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/cs/Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/cs/Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/de/Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/de/Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/de/Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/es/Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/es/Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/es/Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/fr/Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/fr/Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/fr/Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/it/Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/it/Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/it/Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/ja/Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/ja/Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/ja/Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/ko/Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/ko/Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/ko/Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/pl/Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/pl/Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/pl/Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/pt-BR/Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/pt-BR/Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/pt-BR/Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/ru/Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/ru/Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/ru/Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/tr/Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/tr/Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/tr/Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/zh-Hans/Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/zh-Hans/Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/zh-Hans/Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/zh-Hant/Microsoft.TestPlatform.CommunicationUtilities.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/zh-Hant/Microsoft.TestPlatform.CrossPlatEngine.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/zh-Hant/Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/Daily Goals Editor.Core.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/Daily Goals Editor.Core.pdb
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/obj/Debug/net10.0/Daily Goals Editor.Tests.csproj.AssemblyReference.cache
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/obj/Debug/net10.0/Daily Goals Editor.Tests.GeneratedMSBuildEditorConfig.editorconfig
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/obj/Debug/net10.0/Daily Goals Editor.Tests.AssemblyInfoInputs.cache
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/obj/Debug/net10.0/Daily Goals Editor.Tests.AssemblyInfo.cs
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/obj/Debug/net10.0/Daily Goals Editor.Tests.csproj.CoreCompileInputs.cache
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/obj/Debug/net10.0/Daily Goals Editor.Tests.sourcelink.json
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/obj/Debug/net10.0/Daily Go.A6ED1EBB.Up2Date
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/obj/Debug/net10.0/Daily Goals Editor.Tests.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/obj/Debug/net10.0/refint/Daily Goals Editor.Tests.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/obj/Debug/net10.0/Daily Goals Editor.Tests.pdb
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/obj/Debug/net10.0/Daily Goals Editor.Tests.genruntimeconfig.cache
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/obj/Debug/net10.0/ref/Daily Goals Editor.Tests.dll
+/Users/samjones/RiderProjects/Daily-Goals-Editor/Daily Goals Editor.Tests/bin/Debug/net10.0/Daily Goals Editor.Tests.runtimeconfig.dev.json

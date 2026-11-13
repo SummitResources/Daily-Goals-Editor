@@ -1,0 +1,29 @@
+<button type="@Type" class="btn btn-@Variant.ToString().ToLowerInvariant() @(Compact ? "btn-compact" : "") @(string.IsNullOrEmpty(Text) ? "btn-icon" : "") @Class"
+        disabled="@(!Enabled)" title="@Title" aria-label="@(Title ?? Text)" @onclick="OnClick">
+    <Icon Kind="Icon" Size="@(Compact || string.IsNullOrEmpty(Text) ? 15 : 17)" />
+    @if (!string.IsNullOrEmpty(Text))
+    {
+        <span>@Text</span>
+    }
+</button>
+
+@code {
+    [Parameter] public string? Text { get; set; }
+
+    [Parameter] public IconKind Icon { get; set; }
+
+    [Parameter] public ButtonVariant Variant { get; set; } = ButtonVariant.Secondary;
+
+    [Parameter] public bool Compact { get; set; }
+
+    [Parameter] public bool Enabled { get; set; } = true;
+
+    /// <summary>Tooltip, which also names an icon-only button for screen readers.</summary>
+    [Parameter] public string? Title { get; set; }
+
+    [Parameter] public string Type { get; set; } = "button";
+
+    [Parameter] public string? Class { get; set; }
+
+    [Parameter] public EventCallback OnClick { get; set; }
+}

@@ -1,0 +1,7 @@
+<span class="category-dot cat-@Category.ToString().ToLowerInvariant()" style="width:@(Size)px;height:@(Size)px"></span>
+
+@code {
+    [Parameter, EditorRequired] public Category Category { get; set; }
+
+    [Parameter] public double Size { get; set; } = 8;
+}
